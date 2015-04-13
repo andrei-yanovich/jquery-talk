@@ -1,0 +1,10 @@
+pre.createdom {
+	float: left;
+}
+button.createdom {
+	width: 50px;
+	height: 30px;
+}
+button.createdom:after {
+	clear: both;
+}

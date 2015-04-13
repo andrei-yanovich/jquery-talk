@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>jQuery</title>
+
+		<meta name="description" content="jQuery talk">
+		<meta name="author" content="Andrei Yanovich">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="reveal/css/reveal.css">
+		<link rel="stylesheet" href="reveal/css/theme/moon.css" id="theme">
+		<link rel="stylesheet" href="custom.css">
+
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="reveal/lib/css/zenburn.css">
+
+		<!--[if lt IE 9]>
+		<script src="reveal/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>jQuery</h1>
+					<h3>write less do more</h3>
+					<small>Created by <a href="skype:andrei_yanovich">Andrei Yanovich</a></small>
+				</section>
+
+				<section>
+					<section>
+						<h2>What is jQuery</h2>
+						<blockquote cite="http://jquery.com">
+							&ldquo;jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use&rdquo;
+						</blockquote>
+					</section>
+					<section>
+						<h2>Why use it?</h2>
+						<ul>
+							<li class="fragment">
+								Succinct API
+								<pre ><code>$('div[name^=andrei]').addClass('presenter')</code></pre>
+							</li>
+							<li class="fragment">
+								Crossbrowser support
+								<img src="images/browser_support.png">
+							</li>
+							<li class="fragment">Mature
+								<ul>
+									<li>More then 30% of all sites that use javascript use jQuery
+									</li>
+									<li>Rich documentation and Tutorials</li>
+									<li>Ton of plugins</li>
+								</ul>
+							</li>
+							<li class="fragment"><b>You can learn it in half an hour!</b></li>
+						</ul>
+						<aside class="notes">
+							Лаконичный API, кроссбраузерность (упомянуть 2 версию)  
+						</aside>
+					</section>
+					<section>
+						<h2>Statistics for websites using JavaScript technologies</h2>
+						<a href="http://trends.builtwith.com/javascript#" target="blank">
+							<img src="images/stats.png" style="max-width=50%">
+						</a>
+						<aside class="notes">
+							Используется практически повсеместно
+						</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>3 easy steps to get started</h2>
+						<p><a href="http://jquery.com/download/">Get the latest version</a></p>
+						<p>Reference it in your code</p>
+						<p>Start using on 'document ready' event:</p>
+						<pre><code data-trim>
+$(document).ready(function() {
+	...
+});
+						</code></pre>
+						<p>or simply</p>
+						<pre><code data-trim>
+$(function () {
+
+});
+						</code></pre>
+					</section>
+					<section>
+						<h3>$() function</h3>
+						<p class="fragment">jQuery can be invoked using <code>$()</code> or <code>jQuery()</code>. jQuery.noConflict() will revert $ to prev value </p>
+						<div class="fragment">
+							<p>New DOM elements can be created on the fly:</p>
+							<pre class="createdom"><code data-trim contenteditable>
+$('<span id="newSpan">NEW!</span>').appendTo('.createdom.placeholder')
+
+							</code></pre><button class="createdom">Run</button>
+							<div class="createdom placeholder"></div>
+						</div>
+						<div class="fragment">
+							<p>Elements can be selected:</p>
+							<pre><code data-trim>
+$('#newSpan'), $('.class'), ...
+							</code></pre>
+						</div>
+						<div class="fragment">
+							<p>and manipulated:</p>
+							<pre><code data-trim>
+$('#newSpan').hide(), $('#newSpan').css('background-color', 'green')
+							</code></pre>
+						</div>
+						<aside class="notes">
+							magic $('#newSpan').fadeToggle('slow')
+						</aside>
+					</section>
+					<section>
+						<h2>Chainability</h2>
+						<div class="fragment">
+						<p>Most of the jQuery API funtions return the jQuery object.  This allows for a fluent, compact programming model.
+</p>
+						<pre><code data-trim>
+$('div').show().toggleClass('main').html('hello');
+
+$.get('example.url') 
+ .done(function() { alert("success"); }) 			
+ .fail(function() { alert("error"); }) 				
+ .always(function() { alert("complete"); });
+
+						</code></pre></div>
+						<div class="fragment">
+						<p>Some methods return a different elements collection. You can call .end() to revert to the previous collection
+</p>
+						<pre><code data-trim>
+$('#intro').css('color', '#cccccc')
+	.find('a').addClass('highlighted').end
+	.find('span').css('color', 'red').end
+
+						</code></pre></div>
+					</section>
+				</section>
+				
+
+
+			</div>
+
+		</div>
+
+		<script src="reveal/lib/js/head.min.js"></script>
+		<script src="reveal/js/reveal.js"></script>
+		<script src="jquery-1.11.2.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal/plugin/zoom-js/zoom.js', async: true },
+					{ src: 'reveal/plugin/notes/notes.js', async: true }
+				]
+			});
+
+			$(function(){
+				var runCode = function runCode(string) {
+					eval(string);
+				}
+
+				$('button.createdom').click(function() {
+					var script = $('pre.createdom code').text();
+					runCode(script);
+				})
+
+			});
+
+
+		</script>
+
+	</body>
+</html>
