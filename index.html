@@ -151,7 +151,189 @@ $('#intro').css('color', '#cccccc')
 						</code></pre></div>
 					</section>
 				</section>
-				
+				<section>
+					<section>
+						<h1>Selectors</h1>
+					</section>
+					<section>
+						<h3>Basic selectors</h3>
+						<p>
+							<pre><code>$('*') /select everything/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$('div') /by tag name/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$('#id') /by id/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$('.class') /by class/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$('div.class, h1, h2') /multiple combinations/</code></pre> 
+						</p>
+					</section>
+					<section>
+						<h3>Hierarchy selectors</h3>
+						<p>
+							<pre><code>$('table td') /descendants/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$('tr > td') /children/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$('label + input') /adjacent siblings/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$('#content ~ div') /general siblings/</code></pre> 
+						</p>
+						
+						<aside class="notes">
+							$('.slides section:first h1 ~ *') $('h1 + h3') $('.slides section') $('.slides > section')
+						</aside>
+					</section>
+					<section>
+						<h3>Index selectors</h3>
+						<p>
+							<pre><code>$('a:first') /first element/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$('a:last') /last element/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$('a:lt(2)') /index less than/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$('a:eq(2)') /index equeals/</code></pre> 
+						</p>
+					</section>
+					<section>
+						<h3>Attribute selectors</h3>
+						<p>
+							<pre><code>$('div[id]') /has id/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$('div[id="main"]') /with id = name/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$('div[name^="main"]') /name starts with main/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$('div[name$="main"]') /name ends with main/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$('div[name*="main"]') /name contains main/</code></pre> 
+						</p>
+					</section>
+					<section>
+						<h3>Form selectors</h3>
+						<p>
+							<pre><code>$(':checkbox') /checkboxes/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$(':radio') /radio buttons/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$(':button') /buttons/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$(':text') /text input/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$(':checked') /checked/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$(':selected') /selected/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$(':enabled') /enabled/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$(':disabled') /disabled/</code></pre> 
+						</p>
+					</section>
+					<section>
+						<h3>Other magic selectors</h3>
+						<p>
+							<pre><code>$('div:visible') /visible element/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$('div:hidden') /hidden element/</code></pre> 
+						</p>
+						<p>
+							<pre><code>$(':animated') /animated/</code></pre> 
+						</p>
+						<p>
+							See others <a href="https://api.jquery.com/category/selectors/">https://api.jquery.com/category/selectors/</a>
+						</p>
+					</section>
+					<section>
+						<h3>jQuery collections</h3>
+						<p>Selector returns a jQuery collection</p>
+						<p>You can treat it like an array</p>
+						<pre><code data-trim>
+$('div.section').length equals to $('div.section').size()
+$('div.section')[0]
+$('div.section').each(function(i) {
+	console.log('Item' + i + ' is ', this)
+})
+						</code></pre>
+					</section>
+					<section>
+						<h3>Traversing the DOM</h3>
+						<p>jQuery provides additional methods for traversing the DOM</p>
+						<p>
+							<pre><code>$('div.section').parent()</code></pre> 
+						</p>
+						<p>
+							<pre><code>$('div.section').next()</code></pre> 
+						</p>
+						<p>
+							<pre><code>$('div.section').prev()</code></pre> 
+						</p>
+						<p>
+							<pre><code>$('div.section').nextAll('div')</code></pre> 
+						</p>
+						<p>
+							<pre><code>$('div.section').parents()</code></pre> 
+						</p>
+						<p>
+							<pre><code>$('div.section').find('h1')</code></pre> 
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>DOM manipulation</h1>
+					</section>
+					<section>
+						<h3>Modifying the content</h3>
+						<div class="fragment"><p>Getting and setting inner content</p>
+						<pre><code data-trim>
+$('.placeholder').html('<p>Hello</p>');
+						</code></pre></div>
+						<div class="fragment"><p>Replacing elements</p>
+						<pre><code data-trim>
+$('.placeholder').replaceWith('<div>Hello</div>');
+$('<h2>Hello</h2>').replaceAll('h1');
+						</code></pre>
+						<div class="fragment"><p>Remove all children</p>
+						<pre><code data-trim>
+$('#main').empty();
+						</code></pre></div>
+						<div class="fragment"><p>Remove selection</p>
+						<pre><code data-trim>
+$('.main').remove();
+						</code></pre></div>
+						<div class="fragment"><p>Change position</p>
+						<pre><code data-trim>
+$('#nav').appendTo('#main');
+						</code></pre></div>
+					</section>
+					<section>
+						 
+					</section>
+				</section>
 
 
 			</div>

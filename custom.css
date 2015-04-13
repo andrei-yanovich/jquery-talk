@@ -8,3 +8,10 @@ button.createdom {
 button.createdom:after {
 	clear: both;
 }
+
+.floatCode pre {
+	float: left;
+}
+.floatCode:after {
+	clear: both;
+}
