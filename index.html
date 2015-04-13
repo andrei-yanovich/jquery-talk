@@ -331,8 +331,208 @@ $('#nav').appendTo('#main');
 						</code></pre></div>
 					</section>
 					<section>
-						 
+						<h3>Handling Attributes</h3>
+						<p>
+							<pre><code data-trim>
+/* get single attribute */
+$('img').attr('alt');
+							</code></pre> 
+						</p>
+						<p>
+							<pre><code data-trim>
+/* set single attribute  */
+$('img').attr('alt', 'img.description');
+							</code></pre> 
+						</p>
+						<p>
+							<pre><code data-trim>
+/* remove attribute */
+$(':text').removeAttr('required');
+							</code></pre> 
+						</p>
+						<p>
+							<pre><code data-trim>
+/* set multiple attributes */
+$('img').attr({ width : 10, height: 10 });
+							</code></pre> 
+						</p>
 					</section>
+					<section>
+						<h3>Handling CSS</h3>
+						<p>
+							<pre><code data-trim>
+/* get style */
+$('div').css('float');
+							</code></pre> 
+						</p>
+						<p>
+							<pre><code data-trim>
+/* set style  */
+$('div').css('float', 'left');
+							</code></pre> 
+						</p>
+						<p>
+							<pre><code data-trim>
+/* set multiple styles */
+$('div').css({ position : 'relative', float: 'none' });
+							</code></pre> 
+						</p>
+						<p>
+							<pre><code data-trim>
+/* add/remove css class */
+$('div').addClass('main');
+$('div').removeClass('main');
+$('div').toggleClass('main');
+							</code></pre> 
+						</p>
+					</section>
+					<section>
+						<h3>Grabbing values</h3>
+						<p>Some methods return results from the first matched element</p>
+						<p>
+							<pre><code data-trim>
+var height = $('div#intro').height();
+var src = $('img.photo').attr('src');
+var lastP = $('p:last').html()
+var hasFoo = $('p').hasClass('foo');
+var email = $('input#email').val();
+							</code></pre> 
+						</p>
+					</section>
+					<section>
+						<h3>Handling events</h3>
+						<div class="fragment"><p>
+							.BIND()
+Attach a handler to an event for the elements. <br>
+.bind( eventType [, eventData ], handler(eventObject) )
+							<pre><code data-trim>
+$( "#foo" ).bind( "click", function() {
+  alert( "User clicked on 'foo.'" );
+});
+							</code></pre> 
+						</p></div>
+						<div class="fragment"><p>
+							.UNBIND()
+Remove a previously-attached event handler from the elements.
+							<pre><code data-trim>
+//Removes the handlers regardless of type.
+$( "#foo" ).unbind();
+
+//Removing handlers for click event type
+$( "#foo").unbind( "click" );
+							</code></pre> 
+						</p></div>
+
+						<aside class="notes">Bind migth be deprecated</aside>
+					</section>
+					<section>
+						<h3>Handling events</h3>
+						<div class="fragment"><p>
+							.ON()
+a proper val to attach an event handler
+							<pre><code data-trim>
+function myHandler( event ) {
+  alert( event.data.foo );
+}
+$( "p" ).on( "click", { foo: "bar" }, myHandler );
+							</code></pre> 
+						</p></div>
+						<div class="fragment"><p>.ONE() <br>
+							Attach a handler to an event for the elements. The handler is executed at most once per element per event type.
+						</p></div>
+						<div class="fragment"><p>
+							.OFF()
+Remove an event handler.
+							<pre><code data-trim>
+$( "p" ).off();
+
+//Remove all delegated click handlers from all paragraphs:
+$( "p" ).off( "click", "**" );
+
+// ... Foo will no longer be called.
+$( "body" ).off( "click", "p", foo );
+							</code></pre> 
+						</p></div>
+						<aside class="notes">Tell about event object</aside>
+					</section>
+					<section>
+						<h3>Shortcuts</h3>
+						<pre><code data-trim>
+.change()
+.focus()
+.focusin()
+.select()
+.submit()
+.click()
+.dblclick()
+.mouseenter()
+.mouseleave()
+.mousemove()
+.keydown()
+.keypress()
+.keyup()
+etc...
+							</code></pre> 
+					</section>
+					<section>
+						<h3>Animation</h3>
+						<ul>
+							<li>
+								jQuery has buil in effects:
+								<pre><code data-trim>
+$('h1').hide('slow');
+$('h1').slideDown('fast');
+$('h1').fadeOut(2000);
+								</code></pre> 
+							</li>
+							<li>
+								You can chain them:
+								<pre style="width:100%"><code data-trim>
+$('h1').fadeOut(1000).slideDown()
+								</code></pre> 
+							</li>
+							<li>
+								Or make your own:
+								<pre><code data-trim>
+$('#block').animate({
+	width: '+=60px',
+	opacity: 0.4,
+	fontSize: '3em',
+	borderWidth: '10px'
+}, 1500);
+								</code></pre> 
+							</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Plugins</h2>
+						<h4>jQuery is extensible through plugins, which
+	can add new methods to the jQuery object:</h4>
+						<ul>
+							<li>Form: better form manipulation</li>
+							<li>UI: drag and drop and widgets</li>
+							<li>... dozens more</li>
+						</ul>
+						<pre><code data-trim>
+jQuery.fn.hideLinks = function() {
+	return this.find('a[href]').hide().end();
+}
+$('p').hideLinks();
+						</code></pre>
+					</section>
+					<section>
+						<h1>Further reading</h1>
+						<ul>
+							<li>http://jquery.com/</li>
+							<li>http://docs.jquery.com/</li>
+							<li>https://jqueryui.com/</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h1>Questions?</h1>
 				</section>
 
 
